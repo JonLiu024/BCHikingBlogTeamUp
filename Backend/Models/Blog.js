@@ -1,13 +1,15 @@
-const mongoose = require('mongoose');
-const { user } = require('./Trail');
-
+const mongoose = require('mongoose')
+const { User } = require('./Users');
+const { Trail } = require('./Trail');
+const Schema = new mongoose.Schema;
 const blogSchema = mongoose.Schema({
     title: {
         type: String,
         required: true
     },
     user: {
-        type: user,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
         required: true
     },
     images: {
@@ -15,7 +17,8 @@ const blogSchema = mongoose.Schema({
         required: false
     },
     trail: {
-        type: trail,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Trail",
         required: true
     },
     content: {
@@ -24,3 +27,6 @@ const blogSchema = mongoose.Schema({
     },
 
 })
+const Blog = mongoose.model('Blog', blogSchema);
+
+module.exports = Blog

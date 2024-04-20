@@ -5,10 +5,12 @@ const difficulty = Object.freeze({
 
 })
 
+const { Blog } = require('./Blog');
 
 
 const { default: mongoose } = require('mongoose');
-const mongoose = require(mongoose);
+const Schema = new mongoose.Schema;
+
 
 const trailSchema = mongoose.Schema({
     name: {
@@ -20,7 +22,8 @@ const trailSchema = mongoose.Schema({
         required: true,
     },
     difficulty: {
-        type: difficulty,
+        type: String,
+        enum: ["Easy", "Moderate", "Hard"],
         required: true
     },
 
@@ -41,16 +44,14 @@ const trailSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    blogs: {
-        type: [blog],
-    },
-    reviews: {
-        type: [review],
-
-    },
+    blogs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Blog' // This must match the name you gave your model when you did mongoose.model('Blog', blogSchema)
+      }],
+   
     rating: {
         type: Number,
-        required: [true, "None"]
+        default: null,
     },
     description: {
         type: String,
@@ -63,4 +64,6 @@ const trailSchema = mongoose.Schema({
 })
 
 
-export const user = mongoose.model("trail", trailSchema);
+const Trail = mongoose.model("Trail", trailSchema);
+
+module.exports = Trail

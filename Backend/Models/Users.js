@@ -1,6 +1,7 @@
+const mongoose = require('mongoose')
 
-const { default: mongoose } = require('mongoose');
-const mongoose = require(mongoose);
+const { Blog } = require('./Blog');
+const Schema = new mongoose.Schema;
 
 const userSchema = mongoose.Schema({
     email: {
@@ -16,12 +17,15 @@ const userSchema = mongoose.Schema({
         required: true
     },
     blogs: {
-        type: Blog[any],
-        require: false
+        type: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Blog' 
+      }],
+      required: false
     },
     image: {
         type: String,
-        required: true
+        required: false
     }
     
 
@@ -31,4 +35,6 @@ const userSchema = mongoose.Schema({
 })
 
 
-export const user = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
+
+module.exports = User
