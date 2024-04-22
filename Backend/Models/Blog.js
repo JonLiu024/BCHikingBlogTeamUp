@@ -19,7 +19,7 @@ const blogSchema = mongoose.Schema({
     trail: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Trail",
-        required: true
+        required: [true, "please add the trail this blog is associated to!"]
     },
     content: {
         type: String,
@@ -27,6 +27,8 @@ const blogSchema = mongoose.Schema({
     },
 
 })
+//reinforce the unique constraints for the blog with title, user and trail composite
+blogSchema.index({title: 1, user: 1, trail: 1}, {unique: true});
 const Blog = mongoose.model('Blog', blogSchema);
 
 module.exports = Blog

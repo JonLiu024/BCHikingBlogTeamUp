@@ -15,7 +15,8 @@ const Schema = new mongoose.Schema;
 const trailSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     location: {
         type: String,
@@ -23,13 +24,13 @@ const trailSchema = mongoose.Schema({
     },
     difficulty: {
         type: String,
-        enum: ["Easy", "Moderate", "Hard"],
+        enum: ["Easy", "Medium", "Hard", "Extremely Challenging"],
         required: true
     },
 
     photos: {
         type: [String],
-        required: true
+        required: false
 
     },
     elevation: {
@@ -44,11 +45,7 @@ const trailSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    blogs: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Blog' // This must match the name you gave your model when you did mongoose.model('Blog', blogSchema)
-      }],
-   
+
     rating: {
         type: Number,
         default: null,
