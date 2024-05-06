@@ -1,4 +1,4 @@
-
+const Trail = require('../Models/Trail')
 
 const createTrail = async(req, res) => {
     try {
@@ -25,7 +25,7 @@ const getAllTrails = async (req, res)=> {
 const updateTrail = async(req, res) => {
     try {
         const {id} = req.params;
-        const trail = await Trail.findByIdAndUpdate(id, req.body);
+        const trail = await Trail.findByIdAndUpdate(id, req.body, {runValidators: true});
         if (!trail) {
             return res.status(404).json({message: "The trail is not found!"});
         }

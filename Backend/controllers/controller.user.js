@@ -1,3 +1,5 @@
+const User = require('../Models/Users')
+
 const getAllUsers = async (req, res) => {
     try {
         const users = await User.find();
@@ -26,7 +28,7 @@ const updateUser = async(req, res) => {
         const {id} = req.params;
         //findByIdAndUpdate method finds the object by its id and update it
         //base on the given request body
-        const user = await User.findByIdAndUpdate(id, req.body);
+        const user = await User.findByIdAndUpdate(id, req.body, {runValidators: true});
         
         if (!user) {
             return res.status(404).json({message: "the user is not found!"});
