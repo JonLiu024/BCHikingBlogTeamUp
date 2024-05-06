@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended: false}));
 //route
 app.use('/api/trails/', trailRoute);
 app.use('/api/blogs/', blogRoute);
-app.use('/api/user', userRoute);
+app.use('/api/users/', userRoute);
 
 app.get("/", (req, res) => {
 

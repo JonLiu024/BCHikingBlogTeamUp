@@ -1,11 +1,14 @@
+const {Blog} = require('../Models/Blog')
+
 const difficulty = Object.freeze({
     EASY: "Easy",
-    MODERATE: "Moderate",
+    MODERATE: "Medium",
     HARD: "Hard",
+    CHALLENGING: "Extremely challenging"
 
 })
 
-const { Blog } = require('./Blog');
+
 
 
 const { default: mongoose } = require('mongoose');
@@ -24,7 +27,7 @@ const trailSchema = mongoose.Schema({
     },
     difficulty: {
         type: String,
-        enum: ["Easy", "Medium", "Hard", "Extremely Challenging"],
+        enum: ["Easy", "Medium", "Hard", "Extremely challenging"],
         required: true
     },
 
@@ -59,7 +62,19 @@ const trailSchema = mongoose.Schema({
 {
     timestamps: true,
 })
-
+//implement delete no action mechanism using prehook
+trailSchema.pre('remove', async function(next) {
+    try {
+        const trail = this;
+        const countBlog = Blog.countDocuments({trail: trail._id});
+        if (countBlog > 0) {
+            throw new Error('This trail cannot be deleted as it is associated with many blogs');
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+})
 
 const Trail = mongoose.model("Trail", trailSchema);
 

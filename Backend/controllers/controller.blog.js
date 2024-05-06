@@ -1,10 +1,13 @@
+const { default: mongoose } = require('mongoose');
+const Blog = require('../Models/Blog')
+
 
 const getAllBlogs = async (req, res) => {
     try {
         const blogs = await Blog.find();
         res.status(200).json(blogs);
     } catch (error) {
-        res.status(500).snde({message : error.message});
+        res.status(500).send({message : error.message});
     }
 };
 
@@ -54,25 +57,23 @@ const getBlogsByUser = async(req, res) => {
 
 /**
  * creates a blog post that associates to an existing trail profile
- * @param {*} req - must conatains an existing and valid trail id parameter, and an existing user 
+ * @param {*} req - must contain an existing and valid trail id parameter, and an existing user 
  * @param {*} res 
  */
 const createBlog = async (req, res) => {
     try {
 
-        const { user, trail } = req.params;
+        const { user, trail } = req.body;
 
-        req.body.trail = new ObjectId(trail);
-        req.body.user = new ObjectId(user);
+        req.body.trail = new mongoose.Types.ObjectId(trail);
+        req.body.user = new mongoose.Types.ObjectId(user);
         
         const blog = await Blog.create(req.body);
 
         res.status(200).json(blog);
 
     } catch (err) {
-        if (err.code == 11000) {
-            res.status(409).send({message: "A blog with the same title has been created by the same user for the same trail!"});
-        }
+        
         res.status(500).send({message: err.message})
 
     }
@@ -81,7 +82,7 @@ const createBlog = async (req, res) => {
 const updateBlog = async(req, res) => {
     try {
         const {id} = req.params;
-        const blog = await Blog.findByIdAndUpdate(id, req.body);
+        const blog = await Blog.findByIdAndUpdate(id, req.body, {runValidators: true});
 
         if (!blog) {
             return res.status(404).json({message: "The blog is not found!"});

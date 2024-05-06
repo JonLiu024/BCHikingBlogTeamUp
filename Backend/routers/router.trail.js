@@ -1,5 +1,7 @@
 const express = require('express');
+const Trail = require('../Models/Trail')
 const router = express.Router();
+const {getAllTrails, getTrail, createTrail, updateTrail, deleteTrail} = require('../controllers/controller.trail')
 
 
 
@@ -12,4 +14,4 @@ router.put('/:id', updateTrail);
 router.delete('/:id', deleteTrail);
 
 
-module.export = router
+module.exports = router
