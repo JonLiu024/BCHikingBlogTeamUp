@@ -1,4 +1,4 @@
-# BC hiking blogger Web App
+# BC hiking blogger Team-up Web App
 
 **Objective: **
 
@@ -26,46 +26,23 @@ The second function, users are able to create an account in the system and creat
    ## functionalities:
    Users can create an account in the platform.
    Users can write and manage blogs or journals using their account
+  
 3. Hiker connect :
-   This feature allows users to start a live chat with another users who both like a trail. They can form a team through this functionality and exchange their contact information.
-
-
-
-# Technical Implementation:
-
-MERN Stacks
-
-## Front-end :
-TypeScript and React will be used to design and implement a user-friendly and responsive client-side webpage.
- 
-
-## Back-end :
-Node.js with Express.js will be used to handle incoming HTTP requests from the front-end, provide CRUD operation for trails, user accounts and blogs, implement user authentication and authorization, and ensure error handling and data validation.
-
-
-## Database :
-MongoDB (Mongoose ORM for structured data handling) will be used to store trail data, user account details, and blogs 
-
-trails {
-  location, elevation, length, averageTimeSpent, difficulty, hikerRating, etc.
-}
-
-user {
-  username, passwordHash, email, user-created blogs
-}
-
-blog {
-  title, content, image, date, comment
-}
-
-## API Endpoints:
- '/api/trails': retrieve, add, edit and delete trail data
- '/api/users': user registration, login, profile management 
- '/api/blogs': create, read, edit, delete blogs/journals
-
- 
+   This feature allows users to live chat with other users.
+   ## functionalities:
+   Users can like a trail profile 
+   Users can write and manage blogs or journals using their account
 
 
 
 
-TypeScript and React will be uesd in this project to implement the client side web page. The PostgreSQL will be use for data storage. 
+# Initial User Interface Design:
+
+<img width="893" alt="Screenshot 2024-09-28 at 10 51 48 PM" src="https://github.com/user-attachments/assets/e8a3d958-4b02-4ff6-971c-d49c90ffee35">
+
+<img width="861" alt="Screenshot 2024-09-28 at 10 52 23 PM" src="https://github.com/user-attachments/assets/0cabdc7f-8411-450b-884f-de06557f0e09">
+
+<img width="868" alt="Screenshot 2024-09-28 at 10 53 03 PM" src="https://github.com/user-attachments/assets/15e8c267-6e03-412f-8327-1894e16d46d0">
+
+
+
