@@ -1,7 +1,11 @@
 # BC hiking blogger Web App
 
 **Objective: **
-This app offers a web platform that helps the hiking enthusiasts from Canada or BC to select the best hiking trails based on their preferences and document their experiences in the form of blogs or journals.
+
+This app offers a web platform that helps the hiking passionate from Canada find their hiking trails of preference based on their preferences and sharing their hiking experience as blogs
+
+Newly updated features:
+
 
 # Core features:
 
@@ -22,6 +26,8 @@ The second function, users are able to create an account in the system and creat
    ## functionalities:
    Users can create an account in the platform.
    Users can write and manage blogs or journals using their account
+3. Hiker connect :
+   This feature allows users to start a live chat with another users who both like a trail. They can form a team through this functionality and exchange their contact information.
 
 
 
