@@ -1,11 +1,11 @@
 # BC hiking blogger Team-up Web App
 
-**Objective: **
+a full-stack application designed to help hiking enthusiasts in Canada find and explore hiking trails based on their preferences, while also allowing users to share their hiking experiences through blogs and journals. 
 
-This app offers a web platform that helps the hiking passionate from Canada find their hiking trails of preference based on their preferences and sharing their hiking experience as blogs
 
-Newly updated features:
+The app offers **personalized trail recommendations** based on user preferences, and features a **Hiker Connect tool** for live chatting with fellow hikers to plan group hikes. Additionally, a **Trail Assistant Chatbot** provides quick access to trail information. 
 
+The app is built using React for the front-end, Node.js/Express for the back-end, and MongoDB for managing user and trail data.
 
 # Core features:
 
