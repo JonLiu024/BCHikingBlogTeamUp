@@ -33,6 +33,9 @@ The second function, users are able to create an account in the system and creat
    Users can like a trail profile 
    Users can write and manage blogs or journals using their account
 
+# System Desgin Architecture
+
+![BC Hiker Team-up App](https://github.com/user-attachments/assets/ddfb0ed0-2762-4e43-a8da-1a474268064e)
 
 
 
