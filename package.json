@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "a full-stack application designed to help hiking enthusiasts in Canada find and explore hiking trails based on their preferences, while also allowing users to share their hiking experiences through blogs and journals.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon back-end/services/ChatRoomServer.js"
+  },
+  "author": "Liu, Jonathon",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
