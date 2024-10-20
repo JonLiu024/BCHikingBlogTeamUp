@@ -1,6 +1,6 @@
 # BC hiking blogger Team-up Web App
 
-a full-stack application designed to help hiking enthusiasts in Canada find and explore hiking trails based on their preferences, while also allowing users to share their hiking experiences through blogs and journals. 
+a full-stack application designed to help hiking enthusiasts in Canada find their next hiking destination and team up with other people for hiking trip, while also allowing users to share their hiking experiences through blogs and journals. 
 
 
 The app offers **personalized trail recommendations** based on user preferences, and features a **Hiker Connect tool** for live chatting with fellow hikers to plan group hikes. Additionally, a **Trail Assistant Chatbot** provides quick access to trail information. 
