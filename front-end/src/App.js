@@ -2,8 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Button } from "@chakra-ui/react";
 import { Route } from "react-router-dom/cjs/react-router-dom.min";
-import Homepage from "./Pages/Homepage";
-import ChatPage from "./Pages/ChatPage";
+import Homepage from "./pages/Homepage";
+import ChatPage from "./pages/ChatPage";
 
 function App() {
   return (

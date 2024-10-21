@@ -9,7 +9,7 @@ const ChatPage = () => {
     setChats(data);
   };
   useState(() => {
-    fetchChats();
+    // fetchChats();
   }, []);
 
   return (
