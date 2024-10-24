@@ -16,22 +16,27 @@ we plan to implement two functions for assisting our users.
    This feature will act as guide, helping users identify trails that aligh with their interests and physical capability
    ## Fucntionalities:
    Users can search for trails based on parameters like locations, elevation, length, average time spent, difficulty, and hiker rating
-   Provides detailed trail information upon selection
    Display a list of nearby trails based on user's current location or specificed location
+
+2. Trail assistant Chatbot (Dialogflow)
+   This user-centric feature provides users with the convenient tools to discover new trails 
+   ## Fucntionalities:
+   User can converse with the chatbot to get the list of recommendated trails profiles using natural language
 
 The second function, users are able to create an account in the system and create hiking blogs or journals for the trails they visited. 
 
-2. Hiking Blog & Journal:
+3. Hiking Blog & Journal:
    This feature allows users to document their hiking experiences,
    ## functionalities:
    Users can create an account in the platform.
    Users can write and manage blogs or journals using their account
   
-3. Hiker connect :
+4. Hiker connect :
    This feature allows users to live chat with other users.
    ## functionalities:
    Users can like a trail profile 
-   Users can write and manage blogs or journals using their account
+   Users can then create a chat room with the blog or connection request posters
+   Users can create group chat room with other users upon successful connection with other users
 
 # System Desgin Architecture
 
