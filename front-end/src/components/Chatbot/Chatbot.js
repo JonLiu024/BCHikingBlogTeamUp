@@ -7,11 +7,11 @@ const ChatBot = () => {
   const sendMessage = async () => {
     if (input) {
       const response = await fetch(
-        `https://dialogflow.googleapis.com/v2/projects/YOUR_PROJECT_ID/agent/sessions/{YOUR_SESSION_ID}:detectIntent`,
+        `https://dialogflow.googleapis.com/v2/projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}:detectIntent`,
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer YOUR_ACCESS_TOKEN`,
+            Authorization: `Bearer ${ACCESS_TOKEN}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
