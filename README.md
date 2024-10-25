@@ -7,6 +7,12 @@ The app offers **personalized trail recommendations** based on user preferences,
 
 The app is built using React for the front-end, Node.js/Express for the back-end, and MongoDB for managing user and trail data.
 
+# System Desgin Architecture
+
+![BC Hiker Team-up App](https://github.com/user-attachments/assets/ddfb0ed0-2762-4e43-a8da-1a474268064e)
+
+
+
 # Core features:
 
 
@@ -38,9 +44,6 @@ The second function, users are able to create an account in the system and creat
    Users can then create a chat room with the blog or connection request posters
    Users can create group chat room with other users upon successful connection with other users
 
-# System Desgin Architecture
-
-![BC Hiker Team-up App](https://github.com/user-attachments/assets/ddfb0ed0-2762-4e43-a8da-1a474268064e)
 
 
 
