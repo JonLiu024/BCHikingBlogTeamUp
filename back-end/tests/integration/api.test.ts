@@ -208,6 +208,14 @@ describe("team-up requests", () => {
     assert.equal(again.status, 200);
     assert.equal(again.body.status, "pending");
 
+    const reverse = await request(app)
+      .post("/api/connections")
+      .set("Authorization", `Bearer ${login.body.token}`)
+      .send({ userId: beau.body._id });
+    assert.equal(reverse.status, 200);
+    assert.equal(reverse.body._id, connected.body._id);
+    assert.equal(reverse.body.status, "pending");
+
     const inbox = await request(app)
       .get("/api/connections/mine")
       .set("Authorization", `Bearer ${login.body.token}`);

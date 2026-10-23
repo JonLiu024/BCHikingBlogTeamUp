@@ -39,11 +39,20 @@ export const createConnection = async (req: Request, res: Response): Promise<voi
       return;
     }
     const existing = await Connection.findOne({
-      requester: req.user._id,
-      recipient: recipientId,
+      $or: [
+        { requester: req.user._id, recipient: recipientId },
+        { requester: recipientId, recipient: req.user._id },
+      ],
     });
     if (existing) {
-      if (!existing.status || existing.status === "declined") {
+      const iAmRequester = String(existing.requester) === String(req.user._id);
+      if (iAmRequester && (!existing.status || existing.status === "declined")) {
+        existing.status = "pending";
+        await existing.save();
+      }
+      if (!iAmRequester && existing.status === "declined") {
+        existing.requester = req.user._id;
+        existing.recipient = recipient._id;
         existing.status = "pending";
         await existing.save();
       }

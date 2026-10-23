@@ -5,6 +5,7 @@ export interface IBlog {
   title: string;
   user: Types.ObjectId;
   images: string[];
+  videos: string[];
   trail: Types.ObjectId;
   content: string;
   conditions: string;
@@ -20,6 +21,7 @@ const blogSchema = new mongoose.Schema<IBlog>(
     title: { type: String, required: true, trim: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     images: { type: [String], default: [] },
+    videos: { type: [String], default: [] },
     trail: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Trail",
