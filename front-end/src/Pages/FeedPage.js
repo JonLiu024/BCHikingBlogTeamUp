@@ -4,12 +4,12 @@ import {
   Box,
   Container,
   Heading,
-  Image,
   Spinner,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { JournalMediaList } from "../components/JournalMedia";
 import NavBar from "../components/NavBar";
 import api, { currentUser } from "../api";
 
@@ -74,9 +74,7 @@ const FeedPage = () => {
               <Text mt={3} whiteSpace="pre-wrap">
                 {post.content}
               </Text>
-              {(post.images || []).map((url) => (
-                <Image key={url} src={url} alt="" mt={3} borderRadius="md" maxH="320px" />
-              ))}
+              <JournalMediaList images={post.images} videos={post.videos} />
             </Box>
           ))}
         </Stack>

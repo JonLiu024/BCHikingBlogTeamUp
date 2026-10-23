@@ -11,6 +11,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useHistory, useParams } from "react-router-dom";
+import { JournalMediaList } from "../components/JournalMedia";
 import NavBar from "../components/NavBar";
 import api, { currentUser } from "../api";
 
@@ -124,6 +125,7 @@ const UserProfilePage = () => {
                 </Badge>
               )}
               <Text mt={2}>{post.content}</Text>
+              <JournalMediaList images={post.images} videos={post.videos} />
             </Box>
           ))}
         </Stack>

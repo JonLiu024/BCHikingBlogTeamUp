@@ -13,7 +13,9 @@ import {
 } from "@chakra-ui/react";
 import { useHistory, useLocation } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import { UploadProgress } from "../components/JournalMedia";
 import api, { currentUser } from "../api";
+import { uploadJournalFile } from "../media/journalTransfer";
 
 const NewJournalPage = () => {
   const history = useHistory();
@@ -34,7 +36,7 @@ const NewJournalPage = () => {
     durationMinutes: "",
     tags: "",
   });
-  const [file, setFile] = useState(null);
+  const [uploads, setUploads] = useState([]);
 
   useEffect(() => {
     if (!currentUser()) {
@@ -50,16 +52,30 @@ const NewJournalPage = () => {
   const submit = async () => {
     setLoading(true);
     try {
-      let images = [];
-      if (file) {
-        const body = new FormData();
-        body.append("file", file);
-        const { data } = await api.post("/api/upload", body);
-        images = [data.fileUrl];
+      const images = [];
+      const videos = [];
+      for (let index = 0; index < uploads.length; index += 1) {
+        const result = await uploadJournalFile(uploads[index].file, (message) => {
+          setUploads((current) =>
+            current.map((item, itemIndex) =>
+              itemIndex === index
+                ? {
+                    ...item,
+                    loaded: message.loaded,
+                    stored: message.stored ?? item.stored,
+                    total: message.total,
+                  }
+                : item
+            )
+          );
+        });
+        if (result.kind === "video") videos.push(result.url);
+        else images.push(result.url);
       }
       await api.post("/api/blogs", {
         ...form,
         images,
+        videos,
         distanceKm: form.distanceKm ? Number(form.distanceKm) : undefined,
         elevationM: form.elevationM ? Number(form.elevationM) : undefined,
         durationMinutes: form.durationMinutes
@@ -154,13 +170,26 @@ const NewJournalPage = () => {
             />
           </FormControl>
           <FormControl mb={4}>
-            <FormLabel>Photo</FormLabel>
+            <FormLabel>Photos or videos</FormLabel>
             <Input
               type="file"
-              accept="image/*"
+              accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime"
+              multiple
               p={1.5}
-              onChange={(event) => setFile(event.target.files[0] || null)}
+              onChange={(event) =>
+                setUploads(
+                  Array.from(event.target.files || []).map((file) => ({
+                    file,
+                    loaded: 0,
+                    stored: 0,
+                    total: file.size,
+                  }))
+                )
+              }
             />
+            <Box mt={3}>
+              <UploadProgress items={uploads} />
+            </Box>
           </FormControl>
           <Button colorScheme="green" width="100%" isLoading={loading} onClick={submit}>
             Post journal

@@ -8,6 +8,7 @@ type JournalBody = {
   trail?: string;
   content?: string;
   images?: string[];
+  videos?: string[];
   conditions?: string;
   difficulty?: Difficulty | "";
   distanceKm?: number;
@@ -102,6 +103,7 @@ export const createBlog = async (req: Request, res: Response): Promise<void> => 
       content: body.content,
       user: req.user._id,
       images: body.images || [],
+      videos: body.videos || [],
       conditions: body.conditions || "",
       difficulty: body.difficulty || "",
       distanceKm: body.distanceKm || undefined,

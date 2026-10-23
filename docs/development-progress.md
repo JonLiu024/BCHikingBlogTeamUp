@@ -1,13 +1,13 @@
 # Technical design
 
-React frontend, TypeScript Express API, MongoDB, S3 for photos.
+React frontend, TypeScript Express API, MongoDB, S3 for journal photos and videos.
 
 Two stored models:
 
 | Model | Stored fields | Used for |
 |---|---|---|
 | Trail profile | Name, place, difficulty, length, elevation, route type, description, rating, latitude, longitude | Search, profile page, and the trail selected on a new post |
-| Post | Author, trail profile, title, text, conditions, difficulty, distance, elevation, time, tags, photo URLs | Journal feed, and the journal list on a trail profile and a hiker profile |
+| Post | Author, trail profile, title, text, conditions, difficulty, distance, elevation, time, tags, photo URLs, video URLs | Journal feed, and the journal list on a trail profile and a hiker profile |
 | Team-up request | Author, trail profile, date, group size, note, optional details | Team-up feed, and the request list on a hiker profile |
 | Connection | Requester, recipient, status (pending, accepted, or declined), optional team-up request | A connect request. The stub chat opens only after the recipient accepts. Messages are not stored. |
 
@@ -25,5 +25,5 @@ Trail profiles are stored in MongoDB. A built-in catalog of BC trails is inserte
 - **Hiker profile:** that person's journals and team-up requests, so someone can read their hiking history before connecting.
 - **Trails:** search profiles by name, place, difficulty, or description, then open one profile.
 - **Trail profile:** saved trail details, a live 7-day forecast, and journals written about that trail.
-- **New journal:** the author picks one trail profile, then writes the post. An optional photo is stored in S3.
+- **New journal:** the author picks one trail profile, then writes the post. Optional photos and videos are sent to the API in chunks over a websocket at `/media` on the API port. The page shows how much the server has received and how much is saved in S3. The feed downloads those files over the same socket and shows that progress before playing them.
 - **New team-up:** the author picks one trail profile, a date, a group size, a short introduction, and optional extra details.
